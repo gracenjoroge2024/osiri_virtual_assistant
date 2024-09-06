@@ -1,97 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Osiri University Chatbot</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f4f4f4;
-    }
-    #chatbox {
-      width: 400px;
-      height: 500px;
-      border: 1px solid #ccc;
-      padding: 10px;
-      background: #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    #messages {
-      height: 400px;
-      overflow-y: scroll;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 10px;
-    }
-    #input {
-      width: 100%;
-      padding: 10px;
-      box-sizing: border-box;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osiri Virtual Assistant</title>
+    <!-- Link to Dialogflow Messenger CSS -->
+    <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
+    <!-- Custom CSS for additional styling -->
+    <style>
+        df-messenger {
+            z-index: 999;
+            position: fixed;
+            --df-messenger-font-color: #000;
+            --df-messenger-font-family: Google Sans;
+            --df-messenger-chat-background: #f3f6fc;
+            --df-messenger-message-user-background: #d3e3fd;
+            --df-messenger-message-bot-background: #fff;
+            bottom: 16px;
+            right: 16px;
+        }
+    </style>
 </head>
 <body>
-  <div id="chatbox">
-    <h1>Osiri University Chatbot</h1>
-    <div id="messages"></div>
-    <input type="text" id="input" placeholder="Ask a question..." onkeypress="if(event.keyCode == 13) sendMessage()">
-  </div>
-
-  <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
-<script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
-<df-messenger
-  project-id="ai-for-everyone-434806"
-  agent-id="46dcc3a8-6a0e-4574-bcb1-d550fff35f68"
-  language-code="en"
-  max-query-length="-1">
-  <df-messenger-chat-bubble
-   chat-title="Osiri Virtual Assistant">
-  </df-messenger-chat-bubble>
-</df-messenger>
-<style>
-  df-messenger {
-    z-index: 999;
-    position: fixed;
-    --df-messenger-font-color: #000;
-    --df-messenger-font-family: Google Sans;
-    --df-messenger-chat-background: #f3f6fc;
-    --df-messenger-message-user-background: #d3e3fd;
-    --df-messenger-message-bot-background: #fff;
-    bottom: 16px;
-    right: 16px;
-  }
-</style>
-
-  <script>
-    function sendMessage() {
-      var input = document.getElementById("input").value;
-      var messages = document.getElementById("messages");
-
-      if (input.trim() === "") return;
-
-      // Display user message
-      var userMessage = document.createElement("div");
-      userMessage.innerHTML = `<b>You:</b> ${input}`;
-      messages.appendChild(userMessage);
-
-      // Simple bot response
-      var botMessage = document.createElement("div");
-      botMessage.innerHTML = `<b>Bot:</b> Let me find information on ${input}`;
-      messages.appendChild(botMessage);
-
-      // Clear input
-      document.getElementById("input").value = "";
-
-      // Scroll to the bottom
-      messages.scrollTop = messages.scrollHeight;
-    }
-  </script>
+    <!-- Dialogflow Messenger Script -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+    <!-- Dialogflow Messenger Widget -->
+    <df-messenger
+        project-id="ai-for-everyone-434806"
+        agent-id="46dcc3a8-6a0e-4574-bcb1-d550fff35f68"
+        language-code="en"
+        max-query-length="-1">
+        <df-messenger-chat-bubble
+            chat-title="Osiri Virtual Assistant">
+        </df-messenger-chat-bubble>
+    </df-messenger>
 </body>
 </html>
